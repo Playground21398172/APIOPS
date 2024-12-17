@@ -1,0 +1,6 @@
+apimServiceName: apim-cicd-qa-hv
+namedValues: 
+loggers:
+diagnostics:
+backends:
+apis:
