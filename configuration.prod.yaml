@@ -1,4 +1,4 @@
-apimServiceName: apim-instance-02
+apimServiceName: prod
 namedValues: 
 loggers:
 diagnostics:
