@@ -1,0 +1,6 @@
+apimServiceName: apim-instance-001
+namedValues: 
+loggers:
+diagnostics:
+backends:
+apis:
