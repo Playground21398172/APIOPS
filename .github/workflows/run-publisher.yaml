@@ -49,7 +49,7 @@ jobs:
       API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: apimartifacts # change this to the artifacts folder
     secrets: inherit
 
-  Push-Changes-To-APIM-Prod-With-Commit-ID:
+  Push-Changes-To-APIM-Qa-With-Commit-ID:
     if: (github.event.inputs.COMMIT_ID_CHOICE == 'publish-artifacts-in-last-commit' || github.event.inputs.COMMIT_ID_CHOICE == '')
     needs: [get-commit, Push-Changes-To-APIM-Dev-With-Commit-ID]
     uses: ./.github/workflows/run-publisher-with-env.yaml
@@ -60,7 +60,7 @@ jobs:
       COMMIT_ID: ${{ needs.get-commit.outputs.commit_id }}
     secrets: inherit
 
-  Push-Changes-To-APIM-Prod-Without-Commit-ID:
+  Push-Changes-To-APIM-Qa-Without-Commit-ID:
     if: ( github.event.inputs.COMMIT_ID_CHOICE == 'publish-all-artifacts-in-repo' )
     needs: [get-commit, Push-Changes-To-APIM-Dev-Without-Commit-ID]
     uses: ./.github/workflows/run-publisher-with-env.yaml
