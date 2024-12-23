@@ -1,6 +1,0 @@
-apimServiceName: prod
-namedValues: 
-loggers:
-diagnostics:
-backends:
-apis:
