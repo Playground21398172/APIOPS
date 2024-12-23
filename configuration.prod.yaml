@@ -1,4 +1,4 @@
-apimServiceName: apim-cicd-qa-hv
+apimServiceName: apim-cicd-dev-hv
 namedValues:
   - name: func-cicd-dev-hv-key
     properties:
