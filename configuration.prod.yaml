@@ -1,9 +1,5 @@
-apimServiceName: apim-cicd-dev-hv
+apimServiceName:
 namedValues:
-  - name: func-cicd-dev-hv-key
-    properties:
-      displayName: func-cicd-dev-hv-key
-      value: "Fw0BAwVgnrnzc5ZcTo8n1+tbFsg6sVd6oTL8tXJ48wGPuxRsgIK+pg=="
 loggers:
 diagnostics:
 backends:
