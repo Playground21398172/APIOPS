@@ -1,0 +1,11 @@
+{
+  "properties": {
+    "displayName": "func-cicd-dev-hv-key",
+    "secret": true,
+    "tags": [
+      "key",
+      "function",
+      "auto"
+    ]
+  }
+}
