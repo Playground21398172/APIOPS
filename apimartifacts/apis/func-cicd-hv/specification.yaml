@@ -9,16 +9,18 @@ paths:
   /HttpTrigger1:
     get:
       summary: HttpTrigger1
+      description: HttpTrigger1
       operationId: get-httptrigger1
       responses:
         '200':
-          description: 
+          description: ''
     post:
       summary: HttpTrigger1
+      description: HttpTrigger1
       operationId: post-httptrigger1
       responses:
         '200':
-          description: 
+          description: ''
 components:
   securitySchemes:
     apiKeyHeader:
