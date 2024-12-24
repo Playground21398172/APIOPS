@@ -1,13 +1,13 @@
 apimServiceName: apim-cicd-qa-hv
 namedValues:
-  - name: func-cicd-dev-hv-key
+  - name: func-cicd-qa-hv-key
     properties:
-      displayName: func-cicd-dev-hv-key
-      value: "HisORF8MmsmWC4xtr6vSIYBWdlMmvFA5Dv4px8WuI4-mAzFurhel9Q=="
+      displayName: func-cicd-qa-hv-key
+      value: "l2uVL02bNVAPP6ZJOQW2XU4ZluNkrfhUYtwoBQPfdNxHtHmcl5HREQ=="
 loggers:
 diagnostics:
 backends:
-  - name: func-cicd-hv
+  - name: func-cicd-qa-hv
     properties:
       url: "https://func-cicd-qa-hv.azurewebsites.net/api"
       resourceId: "https://management.azure.com/subscriptions/92449014-82af-46f5-9261-e493e2c046fc/resourceGroups/rgp-davies/providers/Microsoft.Web/sites/func-cicd-qa-hv"
