@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: func-cicd-hv
-  description: Import from "func-cicd-dev-hv" Function App
+  description: Import from function from Function App
   version: '1.0'
 servers:
   - url: https://apim-cicd-dev-hv.azure-api.net/func

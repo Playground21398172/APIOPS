@@ -3,7 +3,7 @@
     "path": "func",
     "apiRevision": "1",
     "authenticationSettings": {},
-    "description": "Import from \u0022func-cicd-dev-hv\u0022 Function App",
+    "description": "Import from function from Function App",
     "isCurrent": true,
     "displayName": "func-cicd-hv",
     "protocols": [
