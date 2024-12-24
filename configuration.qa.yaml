@@ -3,7 +3,7 @@ namedValues:
   - name: func-cicd-dev-hv-key
     properties:
       displayName: func-cicd-dev-hv-key
-      value: "Fw0BAwVgnrnzc5ZcTo8n1+tbFsg6sVd6oTL8tXJ48wGPuxRsgIK+pg=="
+      value: "HisORF8MmsmWC4xtr6vSIYBWdlMmvFA5Dv4px8WuI4-mAzFurhel9Q=="
 loggers:
 diagnostics:
 backends:
