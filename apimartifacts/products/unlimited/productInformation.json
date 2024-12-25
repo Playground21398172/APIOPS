@@ -1,0 +1,9 @@
+{
+  "properties": {
+    "displayName": "Unlimited",
+    "description": "testing",
+    "approvalRequired": false,
+    "state": "published",
+    "subscriptionRequired": true
+  }
+}
