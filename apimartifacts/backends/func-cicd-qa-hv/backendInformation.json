@@ -1,0 +1,15 @@
+{
+    "properties": {
+      "credentials": {
+        "header": {
+          "x-functions-key": [
+            "{{func-cicd-qa-hv-key}}"
+          ]
+        }
+      },
+      "description": "func-cicd-qa-hv",
+      "protocol": "http",
+      "resourceId": "https://management.azure.com/subscriptions/92449014-82af-46f5-9261-e493e2c046fc/resourceGroups/rgp-davies/providers/Microsoft.Web/sites/func-cicd-qa-hv",
+      "url": "https://func-cicd-qa-hv.azurewebsites.net/api"
+    }
+  }

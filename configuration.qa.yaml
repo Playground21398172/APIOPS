@@ -1,8 +1,8 @@
 apimServiceName: apim-cicd-qa-hv
 namedValues:
-  - name: func-cicd-hv-key
+  - name: func-cicd-qa-hv-key
     properties:
-      displayName: func-cicd-hv-key
+      displayName: func-cicd-qa-hv-key
       value: "l2uVL02bNVAPP6ZJOQW2XU4ZluNkrfhUYtwoBQPfdNxHtHmcl5HREQ=="
 loggers:
 diagnostics:
