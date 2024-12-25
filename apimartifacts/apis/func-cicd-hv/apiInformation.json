@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "path": "func",
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "description": "Import from function from Function App",
+    "isCurrent": true,
+    "displayName": "func-cicd-hv",
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "https://apim-cicd-dev-hv.azure-api.net/func",
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": false
+  }
+}
