@@ -3,7 +3,7 @@
     "credentials": {
       "header": {
         "x-functions-key": [
-          "{{func-cicd-dev-hv-key}}"
+          "{{func-cicd-hv-key}}"
         ]
       }
     },
