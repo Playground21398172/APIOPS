@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "scope": "/subscriptions/92449014-82af-46f5-9261-e493e2c046fc/resourceGroups/rgp-davies/providers/Microsoft.ApiManagement/service/apim-cicd-dev-hv/products/sprint2-demo",
+    "allowTracing": false,
+    "ownerId": "/subscriptions/92449014-82af-46f5-9261-e493e2c046fc/resourceGroups/rgp-davies/providers/Microsoft.ApiManagement/service/apim-cicd-dev-hv/users/1",
+    "state": "active"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "properties": {
+    "displayName": "sprint2-demo",
+    "description": "demo",
+    "approvalRequired": false,
+    "state": "published",
+    "subscriptionRequired": true
+  }
+}
