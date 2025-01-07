@@ -8,8 +8,6 @@ servers:
 paths:
   /GetMyData:
     get:
-      tags:
-        - data
       summary: getMyData
       description: getMyData
       operationId: getMyData

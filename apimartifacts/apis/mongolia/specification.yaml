@@ -1,0 +1,1171 @@
+openapi: 3.0.1
+info:
+  title: Mongolia-APIs
+  description: This is a template function app to be used for Keoghs internal development
+  version: '1.0'
+servers:
+  - url: https://apim-cicd-dev-hv.azure-api.net/mongolia
+paths:
+  /v1/sample-app/health-check:
+    get:
+      summary: Health check endpoint
+      description: This is health check endpoint that can be called from an independent service monitoring tool to ensure that this service is running and in a healthy state.
+      operationId: HealthCheckFunction
+      responses:
+        '200':
+          description: This response indicates a positive health check response.
+        '500':
+          description: The server encountered an unexpected condition which prevented it from fulfilling the request.
+  /v1/sample-app/http-example:
+    post:
+      summary: This is an example endpoint
+      description: This is an Example HTTP Trigger using Azure Functions
+      operationId: example
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSampleRequest'
+            example:
+              payload: string
+              startDate: '2025-01-02'
+              startTime: '2025-01-06'
+      responses:
+        '200':
+          description: This returns the response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSampleRequest'
+              example:
+                payload: string
+                startDate: '2025-01-02'
+                startTime: '2025-01-06'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/apiSampleRequest'
+              examples:
+                default:
+                  value: 
+        '400':
+          description: 'The server could not act upon the request provided, please check it against our schema.'
+          content:
+            application/json:
+              schema:
+                type: string
+              example: string
+            text/plain:
+              schema:
+                type: string
+              examples:
+                default:
+                  value: 
+        '500':
+          description: The server encountered an unexpected condition which prevented it from fulfilling the request.
+          content:
+            application/json: { }
+            text/plain: { }
+  /v1/logging-pii:
+    post:
+      summary: Logging PII
+      description: This endpoint demonstrates how to log PII (Personal Identifiable Information)
+      operationId: logging-pii
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/logPersonalInfoRequest'
+            example:
+              firstName: string
+              lastName: string
+              emailAddress: string
+              successfulDbsCheck: true
+              id: string
+      responses:
+        '200':
+          description: This returns the response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/logPersonalInfoResponse'
+              example:
+                receivedAt: string
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/logPersonalInfoResponse'
+              examples:
+                default:
+                  value: 
+        '400':
+          description: 'The server could not act upon the request provided, please check it against our schema.'
+          content:
+            application/json:
+              schema:
+                type: string
+              example: string
+            text/plain:
+              schema:
+                type: string
+              examples:
+                default:
+                  value: 
+        '500':
+          description: The server encountered an unexpected condition which prevented it from fulfilling the request.
+          content:
+            application/json: { }
+            text/plain: { }
+  /message:
+    post:
+      summary: create message
+      operationId: create-message
+      requestBody:
+        description: Creates message
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createMessageRequest'
+            example:
+              createdDateTime: string
+              createdByUserId: string
+              subject: string
+              body: string
+              isHtmlBody: true
+      responses:
+        '201':
+          description: Actual message created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/message'
+              example:
+                id: string
+                subject: string
+                body: string
+                isHtmlBody: true
+                createdDateTime: string
+                createdByUserId: string
+                updatedDateTime: string
+                updatedByUserId: string
+        '400':
+          description: Returns a 400 Bad Request response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '500':
+          description: Returns a 500 Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+    put:
+      summary: update message
+      operationId: update-message
+      requestBody:
+        description: Updates message
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateMessageRequest'
+            example:
+              messageId: string
+              updatedDateTime: string
+              updatedByUserId: string
+              subject: string
+              body: string
+              isHtmlBody: true
+      responses:
+        '201':
+          description: Message updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/message'
+              example:
+                id: string
+                subject: string
+                body: string
+                isHtmlBody: true
+                createdDateTime: string
+                createdByUserId: string
+                updatedDateTime: string
+                updatedByUserId: string
+        '400':
+          description: Returns a 400 Bad Request response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '500':
+          description: Returns a 500 Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+  '/message/{messageId}':
+    delete:
+      summary: delete message
+      operationId: delete-message
+      parameters:
+        - name: messageId
+          in: path
+          description: Id of message to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns 200 for successful deletion
+          content:
+            application/json: { }
+        '400':
+          description: Returns a 400 Bad Request response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '404':
+          description: Returns a 404 Not found response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '500':
+          description: Returns a 500 Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+    get:
+      summary: read message
+      operationId: read-message
+      parameters:
+        - name: messageId
+          in: path
+          description: Id of message to retrieve
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payload of Message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/message'
+              example:
+                id: string
+                subject: string
+                body: string
+                isHtmlBody: true
+                createdDateTime: string
+                createdByUserId: string
+                updatedDateTime: string
+                updatedByUserId: string
+        '400':
+          description: Returns a 400 Bad Request response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '404':
+          description: Returns a 404 Not found response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '500':
+          description: Returns a 500 Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+  '/claim/view-main-tab/{claimId}':
+    get:
+      summary: view main tab
+      operationId: view-main-tab
+      parameters:
+        - name: claimId
+          in: path
+          description: Id of claim to retrieve
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payload of MainTabRecordList
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mainTabRecordList'
+              example:
+                data:
+                  - claimId: string
+                    dateCreated: string
+                    reportedMethod:
+                      id: string
+                      description: string
+                    incidentType:
+                      id: string
+                      description: string
+                    team:
+                      id: string
+                      description: string
+                    teamLeader:
+                      id: string
+                      description: string
+                    handler:
+                      id: string
+                      description: string
+        '400':
+          description: Returns a 400 Bad Request response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '404':
+          description: Returns a 404 Not found response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '500':
+          description: Returns a 500 Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+  '/claim/{Id}':
+    get:
+      summary: GetClaimDetail
+      operationId: GetClaimDetail
+      parameters:
+        - name: Id
+          in: path
+          description: Id of claim to retrieve
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payload of Claim
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/claim'
+              example:
+                id: string
+                principal: string
+                claimReference: string
+                incidentType:
+                  id: string
+                  description: string
+                policyHolderFirstName: string
+                policyHolderLastName: string
+                policyHolder: string
+                nextTask:
+                  status: string
+                  type: string
+                nextTaskDate: string
+                exposures:
+                  - id: string
+                    name: string
+                tags:
+                  - id: string
+                    name: string
+        '400':
+          description: Returns a 400 Bad Request response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '404':
+          description: Returns a 404 Not found response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '500':
+          description: Returns a 500 Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+  '/claims/{claimId}/directories':
+    get:
+      summary: GetDirectoryItem
+      operationId: GetDirectoryItem
+      parameters:
+        - name: claimId
+          in: path
+          description: Id of claim to retrieve directory
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: query
+          description: Id of directory to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payload of DirectoryItem
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/directoryItem'
+        '400':
+          description: Returns a 400 Bad Request response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '404':
+          description: Returns a 404 Not found response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '500':
+          description: Returns a 500 Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+  /claim:
+    get:
+      summary: get claims
+      operationId: get-claims
+      parameters:
+        - name: pageNumber
+          in: query
+          description: Default value is 1.
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: Default value is 10.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payload of Claim
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/claim'
+              example:
+                id: string
+                principal: string
+                claimReference: string
+                incidentType:
+                  id: string
+                  description: string
+                policyHolderFirstName: string
+                policyHolderLastName: string
+                policyHolder: string
+                nextTask:
+                  status: string
+                  type: string
+                nextTaskDate: string
+                exposures:
+                  - id: string
+                    name: string
+                tags:
+                  - id: string
+                    name: string
+        '400':
+          description: Returns a 400 Bad Request response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '404':
+          description: Returns a 404 Not found response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '500':
+          description: Returns a 500 Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+  '/claim/incident-tab/{claimId}':
+    get:
+      summary: get incident tab
+      operationId: get-incident-tab
+      parameters:
+        - name: claimId
+          in: path
+          description: Id of Claim to retrive
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payload of IncidentTabModel
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/incidentTabModel'
+              example:
+                claimId: string
+                dateCreated: string
+                motorIncident: string
+                circumstances: string
+                roadType:
+                  - label: string
+                    value: string
+                wather:
+                  - label: string
+                    value: string
+                roadConditions:
+                  - label: string
+                    value: string
+                details: string
+        '400':
+          description: Returns a 400 Bad Request response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '404':
+          description: Returns a 404 Not found response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '500':
+          description: Returns a 500 Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+  '/claim/policy-tab/{claimId}':
+    get:
+      summary: 'get policy tab '
+      operationId: get-policy-tab
+      parameters:
+        - name: claimId
+          in: path
+          description: Id of Claim to retrive
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payload of PolicyTabModel
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/policyTabModel'
+              example:
+                claimId: string
+                policyReference: string
+                policyNumber: string
+                policyHolder: string
+                insurer: string
+        '400':
+          description: Returns a 400 Bad Request response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '404':
+          description: Returns a 404 Not found response with details as to why the request was unsuccessful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+        '500':
+          description: Returns a 500 Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+                extensions: { }
+components:
+  schemas:
+    apiSampleRequest:
+      type: object
+      properties:
+        payload:
+          type: string
+        startDate:
+          $ref: '#/components/schemas/dateOnly'
+        startTime:
+          $ref: '#/components/schemas/timeOnly'
+    claim:
+      type: object
+      properties:
+        id:
+          type: string
+        principal:
+          type: string
+        claimReference:
+          type: string
+        incidentType:
+          $ref: '#/components/schemas/incidentType'
+        policyHolderFirstName:
+          type: string
+        policyHolderLastName:
+          type: string
+        policyHolder:
+          type: string
+        nextTask:
+          $ref: '#/components/schemas/nextTask'
+        nextTaskDate:
+          type: string
+        exposures:
+          type: array
+          items:
+            $ref: '#/components/schemas/exposure'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/tag'
+    createMessageRequest:
+      required:
+        - createdByUserId
+      type: object
+      properties:
+        createdDateTime:
+          type: string
+          format: date-time
+        createdByUserId:
+          minLength: 1
+          type: string
+          format: uuid
+        subject:
+          type: string
+        body:
+          type: string
+        isHtmlBody:
+          type: boolean
+    dateOnly:
+      type: string
+      properties:
+        year:
+          type: integer
+          format: int32
+        month:
+          type: integer
+          format: int32
+        day:
+          type: integer
+          format: int32
+        dayOfWeek:
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+          type: integer
+          format: int32
+          default: 0
+        dayOfYear:
+          type: integer
+          format: int32
+        dayNumber:
+          type: integer
+          format: int32
+      default: '2025-01-02'
+    directoryItem:
+      type: object
+      properties:
+        id:
+          type: string
+        claimId:
+          type: string
+        name:
+          type: string
+        parentId:
+          type: string
+        url:
+          type: string
+        fileType:
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+          type: integer
+          format: int32
+          default: 0
+        createdAt:
+          type: string
+          format: date-time
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/directoryItem'
+    exposure:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    handler:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+    incident:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+    incidentTabModel:
+      type: object
+      properties:
+        claimId:
+          type: string
+        dateCreated:
+          type: string
+          format: date-time
+        motorIncident:
+          type: string
+        circumstances:
+          type: string
+        roadType:
+          type: array
+          items:
+            $ref: '#/components/schemas/roadType'
+        wather:
+          type: array
+          items:
+            $ref: '#/components/schemas/wather'
+        roadConditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/roadConditions'
+        details:
+          type: string
+    incidentType:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+    logPersonalInfoRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        emailAddress:
+          type: string
+        successfulDbsCheck:
+          type: boolean
+        id:
+          type: string
+          format: uuid
+    logPersonalInfoResponse:
+      type: object
+      properties:
+        receivedAt:
+          type: string
+          format: date-time
+    mainTabRecord:
+      type: object
+      properties:
+        claimId:
+          type: string
+        dateCreated:
+          type: string
+          format: date-time
+        reportedMethod:
+          $ref: '#/components/schemas/reportedMethod'
+        incidentType:
+          $ref: '#/components/schemas/incident'
+        team:
+          $ref: '#/components/schemas/team'
+        teamLeader:
+          $ref: '#/components/schemas/teamLeader'
+        handler:
+          $ref: '#/components/schemas/handler'
+    mainTabRecordList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/mainTabRecord'
+    message:
+      type: object
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+        body:
+          type: string
+        isHtmlBody:
+          type: boolean
+        createdDateTime:
+          type: string
+          format: date-time
+        createdByUserId:
+          type: string
+          format: uuid
+        updatedDateTime:
+          type: string
+          format: date-time
+        updatedByUserId:
+          type: string
+          format: uuid
+    nextTask:
+      type: object
+      properties:
+        status:
+          type: string
+        type:
+          type: string
+    policyTabModel:
+      type: object
+      properties:
+        claimId:
+          type: string
+        policyReference:
+          type: string
+        policyNumber:
+          type: string
+        policyHolder:
+          type: string
+        insurer:
+          type: string
+    problemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        detail:
+          type: string
+        instance:
+          type: string
+        extensions:
+          type: object
+          additionalProperties:
+            type: object
+    reportedMethod:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+    roadConditions:
+      type: object
+      properties:
+        label:
+          type: string
+        value:
+          type: string
+    roadType:
+      type: object
+      properties:
+        label:
+          type: string
+        value:
+          type: string
+    tag:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    team:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+    teamLeader:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+    timeOnly:
+      type: string
+      properties:
+        hour:
+          type: integer
+          format: int32
+        minute:
+          type: integer
+          format: int32
+        second:
+          type: integer
+          format: int32
+        millisecond:
+          type: integer
+          format: int32
+        microsecond:
+          type: integer
+          format: int32
+        nanosecond:
+          type: integer
+          format: int32
+        ticks:
+          type: integer
+          format: int64
+      default: '14:14:13'
+    updateMessageRequest:
+      required:
+        - messageId
+        - updatedByUserId
+      type: object
+      properties:
+        messageId:
+          minLength: 1
+          type: string
+        updatedDateTime:
+          type: string
+          format: date-time
+        updatedByUserId:
+          minLength: 1
+          type: string
+          format: uuid
+        subject:
+          type: string
+        body:
+          type: string
+        isHtmlBody:
+          type: boolean
+    wather:
+      type: object
+      properties:
+        label:
+          type: string
+        value:
+          type: string
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]
