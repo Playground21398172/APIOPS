@@ -1,26 +1,26 @@
 openapi: 3.0.1
 info:
-  title: 'Hoang '
-  description: This is the OpenAPI Document on Azure Functions
+  title: testing
+  description: Import from function from Function App
   version: '1.0'
 servers:
   - url: https://apim-cicd-dev-hv.azure-api.net/demo2
 paths:
-  /GetMyData:
+  /HttpTrigger1:
     get:
-      tags:
-        - data
-      summary: getMyData
-      description: getMyData
-      operationId: getMyData
+      summary: HttpTrigger1
+      description: HttpTrigger1
+      operationId: get-httptrigger1
       responses:
         '200':
-          description: Successful
-          content:
-            application/json:
-              schema:
-                type: string
-              example: string
+          description: ''
+    post:
+      summary: HttpTrigger1
+      description: HttpTrigger1
+      operationId: post-httptrigger1
+      responses:
+        '200':
+          description: ''
 components:
   securitySchemes:
     apiKeyHeader:
