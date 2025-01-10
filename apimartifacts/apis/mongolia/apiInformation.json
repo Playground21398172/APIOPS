@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "path": "mongolia",
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "description": "This is a template function app to be used for Keoghs internal development",
+    "isCurrent": true,
+    "displayName": "Mongolia-APIs",
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "http://localhost:7071/api",
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": true
+  }
+}
