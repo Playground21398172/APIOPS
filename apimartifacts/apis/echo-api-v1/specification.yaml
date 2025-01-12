@@ -1,9 +1,9 @@
 openapi: 3.0.1
 info:
   title: Echo API
-  version: ''
+  version: v1
 servers:
-  - url: https://apim-cicd-dev-hv.azure-api.net/echo
+  - url: https://apim-cicd-dev-hv.azure-api.net/echo/v1
 paths:
   /resource:
     get:
