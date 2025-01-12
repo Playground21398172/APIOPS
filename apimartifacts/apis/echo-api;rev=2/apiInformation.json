@@ -1,18 +1,17 @@
 {
   "properties": {
-    "path": "demo2",
-    "apiRevision": "1",
+    "path": "echo",
+    "apiRevision": "2",
     "authenticationSettings": {},
-    "description": "This is the OpenAPI Document on Azure Functions",
-    "isCurrent": true,
-    "displayName": "Demo2",
+    "displayName": "Echo API",
     "protocols": [
       "https"
     ],
+    "serviceUrl": "http://echoapi.cloudapp.net/api",
     "subscriptionKeyParameterNames": {
       "header": "Ocp-Apim-Subscription-Key",
       "query": "subscription-key"
     },
-    "subscriptionRequired": true
+    "subscriptionRequired": false
   }
 }
