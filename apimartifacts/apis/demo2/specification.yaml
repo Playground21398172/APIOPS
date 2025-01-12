@@ -24,7 +24,7 @@ paths:
     delete:
       summary: HttpTrigger1
       description: HttpTrigger1
-      operationId: post-httptrigger1
+      operationId: delete-httptrigger1
       responses:
         '200':
           description: ''
