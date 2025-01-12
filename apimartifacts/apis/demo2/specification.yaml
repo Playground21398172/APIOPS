@@ -21,6 +21,13 @@ paths:
       responses:
         '200':
           description: ''
+    delete:
+      summary: HttpTrigger1
+      description: HttpTrigger1
+      operationId: post-httptrigger1
+      responses:
+        '200':
+          description: ''
 components:
   securitySchemes:
     apiKeyHeader:
