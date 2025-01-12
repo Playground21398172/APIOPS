@@ -1,9 +1,11 @@
 {
   "properties": {
     "path": "echo",
-    "apiRevision": "2",
+    "apiRevision": "1",
+    "apiVersion": "v1",
     "apiVersionSetId": "/subscriptions/92449014-82af-46f5-9261-e493e2c046fc/resourceGroups/rgp-davies/providers/Microsoft.ApiManagement/service/apim-cicd-dev-hv/apiVersionSets/6783f08e02034aa987d1610e",
     "authenticationSettings": {},
+    "isCurrent": true,
     "displayName": "Echo API",
     "protocols": [
       "https"
