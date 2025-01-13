@@ -27,7 +27,7 @@ paths:
             type: number
       responses:
         '200':
-          description: Returned in all cases.
+          description: test
     put:
       summary: Modify Resource
       description: A demonstration of a PUT call handled by the same "echo" backend as above. You can now specify a request body in addition to headers and it will be returned as well.
