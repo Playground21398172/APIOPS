@@ -1,4 +1,4 @@
-swagger: '2.0'
+swagger: '3.0'
 info:
   title: OpenAPI Document on Azure Functions
   description: This is the OpenAPI Document on Azure Functions
